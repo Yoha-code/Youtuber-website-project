@@ -1,75 +1,454 @@
-        <!-- PAGE 3: Lore & Videos Gallery -->
-        <div id="page-gallery" class="page-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technoblade | Lore & Legendary Moments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#09090b',
+                        cardBg: '#121217',
+                        cardBorder: '#272730',
+                        technoRed: '#ff1e27',
+                        technoRedGlow: '#ef4444',
+                        technoGold: '#f59e0b',
+                    },
+                    fontFamily: {
+                        headline: ['Cinzel', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'red-glow': '0 0 25px -5px rgba(255, 30, 39, 0.5)',
+                        'gold-glow': '0 0 20px -5px rgba(245, 158, 11, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #272730;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff1e27;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .text-glow-red {
+            text-shadow: 0 0 25px rgba(255, 30, 39, 0.8), 0 0 50px rgba(255, 30, 39, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-200 font-body antialiased min-h-screen flex flex-col selection:bg-technoRed selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-cardBorder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <div class="text-center max-w-3xl mx-auto space-y-3">
-                <span class="text-xs font-bold uppercase tracking-widest text-technoGold">Archived Records</span>
-                <h1 class="font-headline font-black text-4xl text-white">Lore, Battles & Iconic Achievements</h1>
-                <p class="text-gray-400 text-sm sm:text-base">Filter through Technoblade's legendary Minecraft sagas, tournament records, and famous wars.</p>
-            </div>
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-technoRed to-black p-0.5 shadow-red-glow group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-cardBg rounded-[7px] flex items-center justify-center border border-technoRed/30">
+                        <span class="font-bold text-technoGold text-lg">👑</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-headline font-black text-xl tracking-wider text-white group-hover:text-technoRed transition-colors">TECHNOBLADE</span>
+                    <span class="block text-[10px] text-technoGold tracking-widest uppercase font-semibold -mt-1">NEVER DIES</span>
+                </div>
+            </a>
 
-            <!-- Filter Categories with Icons -->
-            <div class="flex flex-wrap items-center justify-center gap-2">
-                <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-technoRed text-white shadow-red-glow flex items-center gap-2">
-                    <span>All Sagas</span>
-                </button>
-                <button onclick="filterGallery('skyblock')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
-                    <svg class="w-3.5 h-3.5 fill-current text-technoGold" viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 3 9.5C2 13.5 3.5 18 7 20C10.5 22 16.5 21.5 19.5 18.5C22.5 15.5 22 10.5 20 7.5C18 4.5 15.5 3 12 3Z"/></svg>
-                    <span>Potato War</span>
-                </button>
-                <button onclick="filterGallery('smp')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
-                    <span>Dream SMP Lore</span>
-                </button>
-                <button onclick="filterGallery('pvp')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
-                    <svg class="w-3.5 h-3.5 fill-current text-technoRed" viewBox="0 0 24 24"><path d="M19.78 2.22a.75.75 0 00-1.06 0l-10.5 10.5a.75.75 0 00-.22.53v2.25c0 .414.336.75.75.75h2.25c.199 0 .389-.079.53-.22l10.5-10.5a.75.75 0 000-1.06l-2.25-2.25z"/></svg>
-                    <span>Unmatched PvP</span>
-                </button>
-            </div>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-1 bg-cardBg/60 p-1.5 rounded-full border border-cardBorder">
+                <a href="index.html" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-white/5">
+                    Home
+                </a>
+                <a href="lore.html" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-white bg-technoRed shadow-red-glow">
+                    Lore & Videos
+                </a>
+                <a href="socials.html" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-white/5">
+                    Socials
+                </a>
+                <a href="newsletter.html" class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-white/5">
+                    Newsletter
+                </a>
+            </nav>
 
-            <!-- Grid Items -->
-            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Quick CTA Button -->
+<!-- Interactive Header 3D Flipping Quote Card (Enlarged & Glassmorphic) -->
+<div class="hidden sm:block relative w-80 h-14 z-50 pointer-events-auto" style="perspective: 1000px;">
+    <div id="quote-card-inner" class="relative w-full h-full cursor-pointer transition-transform duration-500 select-none" style="transform-style: preserve-3d; transform: rotateY(0deg);">
+        
+        <!-- FRONT FACE (Transparent Glassmorphic) -->
+        <div class="absolute inset-0 w-full h-full rounded-2xl bg-black/30 backdrop-blur-md p-0.5 shadow-red-glow flex items-center justify-between px-4 border border-technoRed/60 hover:border-technoRed transition-colors" style="backface-visibility: hidden; -webkit-backface-visibility: hidden;">
+            <div class="flex items-center gap-2.5 pointer-events-none">
+                <i class="fa-solid fa-crown text-technoGold text-base"></i>
+                <span class="text-sm font-bold text-white tracking-wide">Legendary Quote</span>
+            </div>
+            <span class="text-[11px] uppercase font-extrabold bg-black/50 text-technoGold px-2.5 py-1 rounded-lg border border-technoGold/40 pointer-events-none flex items-center gap-1">
+                Click <i class="fa-solid fa-rotate text-[10px]"></i>
+            </span>
+        </div>
+
+        <!-- BACK FACE (Transparent Glassmorphic) -->
+        <div class="absolute inset-0 w-full h-full rounded-2xl bg-darkBg/40 backdrop-blur-md border border-technoRed/70 shadow-red-glow px-4 py-2 flex items-center justify-between" style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg);">
+            <p id="quoteTextHeader" class="text-[11px] font-semibold text-technoGold italic truncate pr-3 pointer-events-none">
+                "Technoblade never dies!"
+            </p>
+            <i class="fa-solid fa-arrows-rotate text-technoRed text-sm shrink-0 pointer-events-none"></i>
+        </div>
+
+    </div>
+</div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-cardBg border border-cardBorder">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-b border-cardBorder px-4 pt-2 pb-6 space-y-2">
+            <a href="index.html" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-gray-300 hover:bg-white/5">Home</a>
+            <a href="lore.html" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-gray-300 hover:bg-white/5">Lore & Videos</a>
+            <a href="socials.html" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-white bg-technoRed/20 border border-technoRed/40">Socials</a>
+            <a href="newsletter.html" class="block w-full text-left px-4 py-3 rounded-lg text-base font-semibold text-gray-300 hover:bg-white/5">Newsletter</a>
+        </div>
+    </header>
+
+    <!-- Main Lore & Video Vault Content -->
+    <main class="flex-grow py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            
+            <!-- Page Header -->
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-technoRed/10 border border-technoRed/30 text-technoRed text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-solid fa-scroll text-technoGold"></i>
+                    <span>The Chronicles</span>
+                </div>
                 
-                <div class="gallery-item skyblock bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-amber-500/10 text-technoGold border border-amber-500/30 text-[10px] font-bold uppercase flex items-center gap-1.5">
-                            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 3 9.5C2 13.5 3.5 18 7 20C10.5 22 16.5 21.5 19.5 18.5C22.5 15.5 22 10.5 20 7.5C18 4.5 15.5 3 12 3Z"/></svg>
+                <!-- Title updated with text-glow-red -->
+                <h1 class="font-headline font-black text-4xl sm:text5xl md:text-6xl lg:text-7xl text-white tracking-tight">
+                    <span class="italic text-technoRed text-glow-red">Lore & Legendary Vault</span>
+                </h1>
+                
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    Explore the iconic sagas, record-breaking PVP achievements, and timeless video moments that cemented Technoblade as an undisputed legend.
+                </p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <button onclick="filterGallery('all')" class="filter-btn px-5 py-2.5 rounded-xl bg-technoRed text-white text-xs font-bold shadow-red-glow transition-all">
+                    All Legends
+                </button>
+                <button onclick="filterGallery('potatowar')" class="filter-btn px-5 py-2.5 rounded-xl bg-cardBg border border-cardBorder text-gray-400 hover:text-white text-xs font-bold transition-all">
+                    Potato War Saga
+                </button>
+                <button onclick="filterGallery('smp')" class="filter-btn px-5 py-2.5 rounded-xl bg-cardBg border border-cardBorder text-gray-400 hover:text-white text-xs font-bold transition-all">
+                    Dream SMP Anarchy
+                </button>
+                <button onclick="filterGallery('pvp')" class="filter-btn px-5 py-2.5 rounded-xl bg-cardBg border border-cardBorder text-gray-400 hover:text-white text-xs font-bold transition-all">
+                    PVP & Tournaments
+                </button>
+            </div>
+
+            <!-- Videos Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Video Item 1 -->
+                <div class="gallery-item potatowar bg-cardBg border border-cardBorder rounded-2xl overflow-hidden hover:border-technoRed/50 transition-all duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://img.youtube.com/vi/5qjnDd1rsII/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/5qjnDd1rsII/hqdefault.jpg'" alt="The Great Potato War" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-technoGold/20 border border-technoGold/40 text-technoGold text-[10px] font-bold uppercase tracking-wider">
                             Potato War
                         </span>
-                        <span class="text-xs text-gray-500">500M+ Potatoes</span>
                     </div>
-                    <h3 class="font-bold text-white text-lg mb-2">The Crown of Hypixel Skyblock</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">A rivalry against im_a_squid_kid that lasted months, featuring custom hot air balloons, intricate minion math, and psychological warfare.</p>
-                    <a href="https://www.youtube.com/watch?v=m4Q_C-B_28E" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
-                        <span>Watch Trilogy</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                    </a>
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-white group-hover:text-technoRed transition-colors">The Great Potato War</h3>
+                            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                                The opening chapter of Technoblade's psychological and farming duel against imSquidKid for the #1 Potato rank on Hypixel Skyblock.
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=5qjnDd1rsII" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-technoGold hover:text-white transition-colors pt-2">
+                            <span>Watch Arc Part 1</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="gallery-item smp bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-red-500/10 text-technoRed border border-red-500/30 text-[10px] font-bold uppercase">Dream SMP</span>
-                        <span class="text-xs text-gray-500">The Anarchist</span>
-                    </div>
-                    <h3 class="font-bold text-white text-lg mb-2">The Destruction of L'Manberg</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">Spawned dozens of withers and unleashed complete anarchy alongside Dream and Philza, delivering the legendary "You want to be a hero, Tommy?" speech.</p>
-                    <a href="https://www.youtube.com/watch?v=gT83Jsn3_Rk" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
-                        <span>Watch Event</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                    </a>
-                </div>
-
-                <div class="gallery-item pvp bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30 text-[10px] font-bold uppercase flex items-center gap-1.5">
-                            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M19.78 2.22a.75.75 0 00-1.06 0l-10.5 10.5a.75.75 0 00-.22.53v2.25c0 .414.336.75.75.75h2.25c.199 0 .389-.079.53-.22l10.5-10.5a.75.75 0 000-1.06l-2.25-2.25z"/></svg>
-                            $100k Duel
+                <!-- Video Item 2 -->
+                <div class="gallery-item potatowar bg-cardBg border border-cardBorder rounded-2xl overflow-hidden hover:border-technoRed/50 transition-all duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://img.youtube.com/vi/09CeBwGbCeg/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/09CeBwGbCeg/hqdefault.jpg'" alt="Potato War 3 Finale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-technoGold/20 border border-technoGold/40 text-technoGold text-[10px] font-bold uppercase tracking-wider">
+                            Potato War
                         </span>
-                        <span class="text-xs text-gray-500">1v1 MrBeast</span>
                     </div>
-                    <h3 class="font-bold text-white text-lg mb-2">Technoblade vs Dream 1v1</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">The ultimate clash of titans hosted by MrBeast across 10 intense rounds in multiple version combat systems. Technoblade emerged victorious 6-4.</p>
-                    <a href="https://www.youtube.com/watch?v=z3Wy3r1jDLA" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
-                        <span>Watch Match</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                    </a>
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-white group-hover:text-technoRed transition-colors">Potato War 3 (FINALE)</h3>
+                            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                                Over 500,000,000 potatoes harvested, advanced Sun Tzu tactics applied, and the ultimate victory sealed.
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=09CeBwGbCeg" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-technoGold hover:text-white transition-colors pt-2">
+                            <span>Watch Finale</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Video Item 3 -->
+                <div class="gallery-item smp bg-cardBg border border-cardBorder rounded-2xl overflow-hidden hover:border-technoRed/50 transition-all duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://img.youtube.com/vi/d13M_k_K31s/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/d13M_k_K31s/hqdefault.jpg'" alt="Anarchy on Dream SMP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-technoRed/20 border border-technoRed/40 text-technoRed text-[10px] font-bold uppercase tracking-wider">
+                            Dream SMP
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-white group-hover:text-technoRed transition-colors">The Fall of L'Manberg</h3>
+                            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                                Unshackled anarchy on the Dream SMP. Technoblade summons the Withers and dismantles government institutions single-handedly.
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=d13M_k_K31s" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-technoGold hover:text-white transition-colors pt-2">
+                            <span>Watch Anarchy Arc</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="gallery-item pvp bg-cardBg border border-cardBorder rounded-2xl overflow-hidden hover:border-technoRed/50 transition-all duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://img.youtube.com/vi/v3L23l3l43s/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/v3L23l3l43s/hqdefault.jpg'" alt="Technoblade vs Dream" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-blue-500/20 border border-blue-500/40 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+                            PVP Duel
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-white group-hover:text-technoRed transition-colors">Technoblade vs Dream ($100,000)</h3>
+                            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                                The ultimate $100k duel hosted by MrBeast across 1.8 and 1.16 combat versions, culminating in an legendary victory.
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=v3L23l3l43s" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-technoGold hover:text-white transition-colors pt-2">
+                            <span>Watch Duel</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Video Item 5 -->
+                <div class="gallery-item pvp bg-cardBg border border-cardBorder rounded-2xl overflow-hidden hover:border-technoRed/50 transition-all duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://img.youtube.com/vi/1D4L25Y1oUQ/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/1D4L25Y1oUQ/hqdefault.jpg'" alt="1,400 Bedwars Streak" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-blue-500/20 border border-blue-500/40 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+                            PVP Record
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-white group-hover:text-technoRed transition-colors">1,400 Bedwars Win Streak</h3>
+                            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                                Setting one of the most absurd win streaks in Hypixel history while casually discussing Greek mythology and college stories.
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=1D4L25Y1oUQ" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-technoGold hover:text-white transition-colors pt-2">
+                            <span>Watch Highlights</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Video Item 6 -->
+                <div class="gallery-item smp bg-cardBg border border-cardBorder rounded-2xl overflow-hidden hover:border-technoRed/50 transition-all duration-300 group flex flex-col">
+                    <div class="relative overflow-hidden aspect-video">
+                        <img src="https://img.youtube.com/vi/DPMluEVUqS0/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/DPMluEVUqS0/hqdefault.jpg'" alt="so long nerds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-technoRed/20 border border-technoRed/40 text-technoRed text-[10px] font-bold uppercase tracking-wider">
+                            Tribute
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-white group-hover:text-technoRed transition-colors">so long nerds</h3>
+                            <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                                Alexander's final message to the community, read by his father. A heartbreaking, beautiful farewell from a king.
+                            </p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=DPMluEVUqS0" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-technoGold hover:text-white transition-colors pt-2">
+                            <span>Watch Tribute Video</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Stats Bar Display -->
+            <div class="bg-cardBg border border-technoRed/40 rounded-3xl p-8 sm:p-12 shadow-red-glow">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <h2 class="font-headline font-bold text-2xl sm:text-3xl text-white">Hall of Statistics</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-1">Unmatched numbers recorded across the multiverse.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-darkBg/80 border border-cardBorder p-6 rounded-2xl text-center space-y-1">
+                        <span class="block text-3xl font-black text-technoRed font-headline">16.8M+</span>
+                        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Subscribers</span>
+                    </div>
+                    <div class="bg-darkBg/80 border border-cardBorder p-6 rounded-2xl text-center space-y-1">
+                        <span class="block text-3xl font-black text-technoGold font-headline">1,400</span>
+                        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Bedwars Win Streak</span>
+                    </div>
+                    <div class="bg-darkBg/80 border border-cardBorder p-6 rounded-2xl text-center space-y-1">
+                        <span class="block text-3xl font-black text-technoRed font-headline">500M+</span>
+                        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Potatoes Farmed</span>
+                    </div>
+                    <div class="bg-darkBg/80 border border-cardBorder p-6 rounded-2xl text-center space-y-1">
+                        <span class="block text-3xl font-black text-technoGold font-headline">1.6B+</span>
+                        <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Total Views</span>
+                    </div>
+                </div>
             </div>
 
         </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cardBg/80 border-t border-cardBorder py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-cardBorder pb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-technoRed/20 border border-technoRed/40 flex items-center justify-center text-technoGold font-bold text-xl">
+                        👑
+                    </div>
+                    <div>
+                        <span class="font-headline font-black text-white tracking-wider block">TECHNOBLADE</span>
+                        <span class="text-xs text-gray-400">1999 – 2022 • Technoblade Never Dies</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                    <a href="lore.html" class="hover:text-white transition-colors">Lore</a>
+                    <a href="newsletter.html" class="hover:text-white transition-colors">Newsletter</a>
+                    <a href="socials.html" class="hover:text-white transition-colors">Socials</a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>© Official Technoblade Tribute Portal. Honor and Memory.</p>
+                <p class="flex items-center gap-1">
+                    <span>Crafted with crown and blood</span>
+                    <i class="fa-solid fa-heart text-technoRed"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-technoRed', 'text-white', 'shadow-red-glow');
+                btn.classList.add('bg-cardBg', 'border', 'border-cardBorder', 'text-gray-400');
+            });
+
+            if (event && event.target) {
+                const targetBtn = event.target.closest('.filter-btn');
+                if (targetBtn) {
+                    targetBtn.classList.remove('bg-cardBg', 'border', 'border-cardBorder', 'text-gray-400');
+                    targetBtn.classList.add('bg-technoRed', 'text-white', 'shadow-red-glow');
+                }
+            }
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
+    <script>
+    (function () {
+        const quotes = [
+            "Technoblade never dies!",
+            "If you wish upon a star, you're wishing upon a satellite.",
+            "Officer, I drop kicked that child in self-defense.",
+            "This is fun. I dropped outta college for this.",
+            "I have been farming potatoes for 11 hours today."
+        ];
+
+        let isFlipped = false;
+
+        function initQuoteCard() {
+            const card = document.getElementById('quote-card-inner');
+            const headerQuoteEl = document.getElementById('quoteTextHeader');
+
+            if (!card) return;
+
+            card.addEventListener('click', function () {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const newQuote = '"' + quotes[randomIndex] + '"';
+
+                // 1. Start 3D Flip
+                isFlipped = !isFlipped;
+                card.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+
+                // 2. Delay quote update by 250ms (halfway through 500ms rotation)
+                setTimeout(() => {
+                    if (headerQuoteEl) {
+                        headerQuoteEl.textContent = newQuote;
+                    }
+                }, 250);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initQuoteCard);
+        } else {
+            initQuoteCard();
+        }
+    })();
+</script>
+
+</body>
+</html>
