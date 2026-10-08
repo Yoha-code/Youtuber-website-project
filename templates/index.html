@@ -99,15 +99,32 @@
                 </a>
             </nav>
 
-            <!-- Quick CTA Button -->
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="newsletter.html" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-bold rounded-xl group bg-gradient-to-br from-technoRed to-amber-600 hover:text-white text-white shadow-red-glow active:scale-95 transition-transform">
-                    <span class="relative px-4 py-2 transition-all ease-in duration-75 bg-darkBg rounded-[10px] group-hover:bg-opacity-0 flex items-center gap-2">
-                        <i class="fa-solid fa-crown text-technoGold"></i>
-                        <span>Join Newsletter</span>
-                    </span>
-                </a>
+        <!-- Quick CTA Button -->
+        <!-- Interactive Header 3D Flipping Quote Card (Enlarged & Glassmorphic) -->
+<div class="hidden sm:block relative w-80 h-14 z-50 pointer-events-auto" style="perspective: 1000px;">
+    <div id="quote-card-inner" class="relative w-full h-full cursor-pointer transition-transform duration-500 select-none" style="transform-style: preserve-3d; transform: rotateY(0deg);">
+        
+        <!-- FRONT FACE (Transparent Glassmorphic) -->
+        <div class="absolute inset-0 w-full h-full rounded-2xl bg-black/30 backdrop-blur-md p-0.5 shadow-red-glow flex items-center justify-between px-4 border border-technoRed/60 hover:border-technoRed transition-colors" style="backface-visibility: hidden; -webkit-backface-visibility: hidden;">
+            <div class="flex items-center gap-2.5 pointer-events-none">
+                <i class="fa-solid fa-crown text-technoGold text-base"></i>
+                <span class="text-sm font-bold text-white tracking-wide">Legendary Quote</span>
             </div>
+            <span class="text-[11px] uppercase font-extrabold bg-black/50 text-technoGold px-2.5 py-1 rounded-lg border border-technoGold/40 pointer-events-none flex items-center gap-1">
+                Click <i class="fa-solid fa-rotate text-[10px]"></i>
+            </span>
+        </div>
+
+        <!-- BACK FACE (Transparent Glassmorphic) -->
+        <div class="absolute inset-0 w-full h-full rounded-2xl bg-darkBg/40 backdrop-blur-md border border-technoRed/70 shadow-red-glow px-4 py-2 flex items-center justify-between" style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg);">
+            <p id="quoteTextHeader" class="text-[11px] font-semibold text-technoGold italic truncate pr-3 pointer-events-none">
+                "Technoblade never dies!"
+            </p>
+            <i class="fa-solid fa-arrows-rotate text-technoRed text-sm shrink-0 pointer-events-none"></i>
+        </div>
+
+    </div>
+</div>
 
             <!-- Mobile Menu Toggle Button -->
             <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-cardBg border border-cardBorder">
@@ -475,206 +492,6 @@
         </div>
     </main>
 
-    <!-- Universal Footer -->
-    <footer class="bg-cardBg/80 border-t border-cardBorder py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-cardBorder pb-8">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-technoRed/20 border border-technoRed/40 flex items-center justify-center text-technoGold font-bold text-xl">
-                        👑
-                    </div>
-                    <div>
-                        <span class="font-headline font-black text-white tracking-wider block">TECHNOBLADE</span>
-                        <span class="text-xs text-gray-400">1999 – 2022 • Technoblade Never Dies</span>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 text-sm text-gray-400">
-                    <a href="index.html" class="hover:text-white transition-colors">Home</a>
-                    <a href="lore.html" class="hover:text-white transition-colors">Lore</a>
-                    <a href="newsletter.html" class="hover:text-white transition-colors">Newsletter</a>
-                    <a href="socials.html" class="hover:text-white transition-colors">Socials</a>
-                </div>
-            </div>
-
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-                <p>© Official Technoblade Tribute Portal. Honor and Memory.</p>
-                <p class="flex items-center gap-1">
-                    <span>Crafted with crown and blood</span>
-                    <i class="fa-solid fa-heart text-technoRed"></i>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function scrollVideos(direction) {
-            const carousel = document.getElementById('video-carousel');
-            const scrollAmount = 360;
-            if (direction === 'left') {
-                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        }
-    </script>
-</body>
-</html>
-<!-- 
-        PAGE 2: Newsletter Drop Section
-        <div id="page-newsletter" class="page-content hidden max-w-4xl mx-auto px-4 py-12">
-            <div class="bg-cardBg rounded-3xl border border-technoRed/40 p-8 sm:p-12 shadow-red-glow relative overflow-hidden">
-                <div class="absolute -top-24 -right-24 w-72 h-72 bg-technoRed/20 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div class="w-16 h-16 rounded-2xl bg-technoRed/20 border border-technoRed/50 flex items-center justify-center text-technoGold text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-crown"></i>
-                    </div>
-                    <h1 class="font-headline font-black text-3xl sm:text-4xl text-white mb-3">Join the Syndicate Newsletter</h1>
-                    <p class="text-gray-400 text-sm sm:text-base">
-                        Get exclusive updates on community events, official merch drops, legendary quotes, and charity livestreams delivered right to your inbox.
-                    </p>
-                </div>
-
-                <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="space-y-6 max-w-xl mx-auto">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Full Name / Username</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="text" id="subscriber-name" required placeholder="e.g. Alex (Blood God)" class="w-full bg-darkBg border border-cardBorder rounded-xl pl-11 pr-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-technoRed focus:ring-1 focus:ring-technoRed transition-all">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Email Address</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                            <input type="email" id="subscriber-email" required placeholder="alex@hypixel.net" class="w-full bg-darkBg border border-cardBorder rounded-xl pl-11 pr-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-technoRed focus:ring-1 focus:ring-technoRed transition-all">
-                        </div>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-darkBg/60 border border-cardBorder text-xs text-gray-400 space-y-2">
-                        <div class="flex items-center gap-2 text-technoGold font-bold">
-                            <i class="fa-solid fa-shield-check"></i>
-                            <span>What you'll receive:</span>
-                        </div>
-                        <ul class="list-disc list-inside space-y-1 pl-1">
-                            <li>Early access notifications for apparel drops & plushies</li>
-                            <li>Weekly community highlight and Technoblade quote</li>
-                            <li>Zero spam, unsubscribe anytime with 1-click</li>
-                        </ul>
-                    </div>
-
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-technoRed to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold text-base transition-all shadow-red-glow active:scale-[0.99] flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>Subscribe Now</span>
-                    </button>
-                </form>
-
-                <div class="mt-12 pt-8 border-t border-cardBorder">
-                    <h3 class="font-bold text-white text-sm mb-4 flex items-center justify-between">
-                        <span>Recent Subscribers</span>
-                        <span id="sub-count-badge" class="px-2.5 py-0.5 rounded-full bg-technoRed/20 text-technoRed text-xs font-bold border border-technoRed/40">3 Loyal Goons</span>
-                    </h3>
-                    <div id="subscribers-list" class="space-y-2 max-h-40 overflow-y-auto pr-1">
-                        <div class="p-3 rounded-lg bg-darkBg/80 border border-cardBorder/60 flex items-center justify-between text-xs">
-                            <span class="font-semibold text-gray-200">TommyInnit</span>
-                            <span class="text-gray-500 font-mono">tommy@smp.org</span>
-                        </div>
-                        <div class="p-3 rounded-lg bg-darkBg/80 border border-cardBorder/60 flex items-center justify-between text-xs">
-                            <span class="font-semibold text-gray-200">Philza Minecraft</span>
-                            <span class="text-gray-500 font-mono">crowfather@hardcore.net</span>
-                        </div>
-                        <div class="p-3 rounded-lg bg-darkBg/80 border border-cardBorder/60 flex items-center justify-between text-xs">
-                            <span class="font-semibold text-gray-200">SquidKid</span>
-                            <span class="text-gray-500 font-mono">potatoking2@skyblock.com</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div> -->
-
-        <!-- PAGE 3: Lore & Videos Gallery
-        <div id="page-gallery" class="page-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-3">
-                <span class="text-xs font-bold uppercase tracking-widest text-technoGold">Archived Records</span>
-                <h1 class="font-headline font-black text-4xl text-white">Lore, Battles & Iconic Achievements</h1>
-                <p class="text-gray-400 text-sm sm:text-base">Filter through Technoblade's legendary Minecraft sagas, tournament records, and famous wars.</p>
-            </div>
-
-            Filter Categories with Icons 
-            <div class="flex flex-wrap items-center justify-center gap-2">
-                <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-technoRed text-white shadow-red-glow flex items-center gap-2">
-                    <span>All Sagas</span>
-                </button>
-                <button onclick="filterGallery('skyblock')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
-                    <svg class="w-3.5 h-3.5 fill-current text-technoGold" viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 3 9.5C2 13.5 3.5 18 7 20C10.5 22 16.5 21.5 19.5 18.5C22.5 15.5 22 10.5 20 7.5C18 4.5 15.5 3 12 3Z"/></svg>
-                    <span>Potato War</span>
-                </button>
-                <button onclick="filterGallery('smp')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
-                    <span>Dream SMP Lore</span>
-                </button>
-                <button onclick="filterGallery('pvp')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
-                    <svg class="w-3.5 h-3.5 fill-current text-technoRed" viewBox="0 0 24 24"><path d="M19.78 2.22a.75.75 0 00-1.06 0l-10.5 10.5a.75.75 0 00-.22.53v2.25c0 .414.336.75.75.75h2.25c.199 0 .389-.079.53-.22l10.5-10.5a.75.75 0 000-1.06l-2.25-2.25z"/></svg>
-                    <span>Unmatched PvP</span>
-                </button>
-            </div>
-
-            Grid Items
-            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="gallery-item skyblock bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-amber-500/10 text-technoGold border border-amber-500/30 text-[10px] font-bold uppercase flex items-center gap-1.5">
-                            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 3 9.5C2 13.5 3.5 18 7 20C10.5 22 16.5 21.5 19.5 18.5C22.5 15.5 22 10.5 20 7.5C18 4.5 15.5 3 12 3Z"/></svg>
-                            Potato War
-                        </span>
-                        <span class="text-xs text-gray-500">500M+ Potatoes</span>
-                    </div>
-                    <h3 class="font-bold text-white text-lg mb-2">The Crown of Hypixel Skyblock</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">A rivalry against im_a_squid_kid that lasted months, featuring custom hot air balloons, intricate minion math, and psychological warfare.</p>
-                    <a href="https://www.youtube.com/watch?v=m4Q_C-B_28E" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
-                        <span>Watch Trilogy</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                    </a>
-                </div>
-
-                <div class="gallery-item smp bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-red-500/10 text-technoRed border border-red-500/30 text-[10px] font-bold uppercase">Dream SMP</span>
-                        <span class="text-xs text-gray-500">The Anarchist</span>
-                    </div>
-                    <h3 class="font-bold text-white text-lg mb-2">The Destruction of L'Manberg</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">Spawned dozens of withers and unleashed complete anarchy alongside Dream and Philza, delivering the legendary "You want to be a hero, Tommy?" speech.</p>
-                    <a href="https://www.youtube.com/watch?v=gT83Jsn3_Rk" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
-                        <span>Watch Event</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                    </a>
-                </div>
-
-                <div class="gallery-item pvp bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30 text-[10px] font-bold uppercase flex items-center gap-1.5">
-                            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M19.78 2.22a.75.75 0 00-1.06 0l-10.5 10.5a.75.75 0 00-.22.53v2.25c0 .414.336.75.75.75h2.25c.199 0 .389-.079.53-.22l10.5-10.5a.75.75 0 000-1.06l-2.25-2.25z"/></svg>
-                            $100k Duel
-                        </span>
-                        <span class="text-xs text-gray-500">1v1 MrBeast</span>
-                    </div>
-                    <h3 class="font-bold text-white text-lg mb-2">Technoblade vs Dream 1v1</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">The ultimate clash of titans hosted by MrBeast across 10 intense rounds in multiple version combat systems. Technoblade emerged victorious 6-4.</p>
-                    <a href="https://www.youtube.com/watch?v=z3Wy3r1jDLA" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
-                        <span>Watch Match</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                    </a>
-                </div>
-
-            </div>
-
-        </div> -->
 
         <!-- PAGE 4: Social Links Grid Section -->
         <div id="page-socials" class="page-content hidden max-w-5xl mx-auto px-4 py-12">
@@ -713,6 +530,7 @@
                 </a>
             </div>
         </div>
+
 
     </main>
 
@@ -767,6 +585,8 @@
         </div>
     </div>
 
+
+
     <script>
         function switchTab(tabId) {
             const pages = document.querySelectorAll('.page-content');
@@ -777,6 +597,7 @@
                 targetPage.classList.remove('hidden');
             }
 
+            
             const navButtons = document.querySelectorAll('.nav-btn');
             navButtons.forEach(btn => {
                 btn.classList.remove('bg-technoRed', 'text-white', 'shadow-red-glow');
@@ -878,5 +699,49 @@
             });
         }
     </script>
+
+<script>
+    (function () {
+        const quotes = [
+            "Technoblade never dies!",
+            "If you wish upon a star, you're wishing upon a satellite.",
+            "Officer, I drop kicked that child in self-defense.",
+            "This is fun. I dropped outta college for this.",
+            "I have been farming potatoes for 11 hours today."
+        ];
+
+        let isFlipped = false;
+
+        function initQuoteCard() {
+            const card = document.getElementById('quote-card-inner');
+            const headerQuoteEl = document.getElementById('quoteTextHeader');
+
+            if (!card) return;
+
+            card.addEventListener('click', function () {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const newQuote = '"' + quotes[randomIndex] + '"';
+
+                // 1. Start 3D Flip
+                isFlipped = !isFlipped;
+                card.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+
+                // 2. Delay quote update by 250ms (halfway through 500ms rotation)
+                setTimeout(() => {
+                    if (headerQuoteEl) {
+                        headerQuoteEl.textContent = newQuote;
+                    }
+                }, 250);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initQuoteCard);
+        } else {
+            initQuoteCard();
+        }
+    })();
+</script>
+
 </body>
 </html>
