@@ -43,7 +43,11 @@ def is_valid_email(email):
 def index():
     """Renders the main Technoblade web hub."""
     return render_template('index.html')
-
+    
+@app.route("/")
+def home():
+    return render_template("index.html")
+    
 @app.route('/lore.html')
 def lore():
     return render_template('lore.html')
