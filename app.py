@@ -38,16 +38,15 @@ def is_valid_email(email):
     return re.match(pattern, email) is not None
 
 # --- Routes ---
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 @app.route('/index.html')
 def index():
     """Renders the main Technoblade web hub."""
     return render_template('index.html')
-    
-@app.route("/")
-def home():
-    return render_template("index.html")
-    
+
 @app.route('/lore.html')
 def lore():
     return render_template('lore.html')
