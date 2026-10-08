@@ -48,6 +48,21 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #ff1e27;
         }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .text-glow-red {
+            text-shadow: 0 0 25px rgba(255, 30, 39, 0.8), 0 0 50px rgba(255, 30, 39, 0.4);
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 30, 39, 0.15) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
     </style>
 </head>
 <body class="bg-darkBg text-gray-200 font-body antialiased min-h-screen flex flex-col selection:bg-technoRed selection:text-white">
@@ -86,14 +101,31 @@
             </nav>
 
             <!-- Quick CTA Button -->
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="newsletter.html" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-bold rounded-xl group bg-gradient-to-br from-technoRed to-amber-600 hover:text-white text-white shadow-red-glow active:scale-95 transition-transform">
-                    <span class="relative px-4 py-2 transition-all ease-in duration-75 bg-darkBg rounded-[10px] group-hover:bg-opacity-0 flex items-center gap-2">
-                        <i class="fa-solid fa-crown text-technoGold"></i>
-                        <span>Join Newsletter</span>
-                    </span>
-                </a>
+            <!-- Interactive Header 3D Flipping Quote Card (Enlarged & Glassmorphic) -->
+<div class="hidden sm:block relative w-80 h-14 z-50 pointer-events-auto" style="perspective: 1000px;">
+    <div id="quote-card-inner" class="relative w-full h-full cursor-pointer transition-transform duration-500 select-none" style="transform-style: preserve-3d; transform: rotateY(0deg);">
+        
+        <!-- FRONT FACE (Transparent Glassmorphic) -->
+        <div class="absolute inset-0 w-full h-full rounded-2xl bg-black/30 backdrop-blur-md p-0.5 shadow-red-glow flex items-center justify-between px-4 border border-technoRed/60 hover:border-technoRed transition-colors" style="backface-visibility: hidden; -webkit-backface-visibility: hidden;">
+            <div class="flex items-center gap-2.5 pointer-events-none">
+                <i class="fa-solid fa-crown text-technoGold text-base"></i>
+                <span class="text-sm font-bold text-white tracking-wide">Legendary Quote</span>
             </div>
+            <span class="text-[11px] uppercase font-extrabold bg-black/50 text-technoGold px-2.5 py-1 rounded-lg border border-technoGold/40 pointer-events-none flex items-center gap-1">
+                Click <i class="fa-solid fa-rotate text-[10px]"></i>
+            </span>
+        </div>
+
+        <!-- BACK FACE (Transparent Glassmorphic) -->
+        <div class="absolute inset-0 w-full h-full rounded-2xl bg-darkBg/40 backdrop-blur-md border border-technoRed/70 shadow-red-glow px-4 py-2 flex items-center justify-between" style="backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg);">
+            <p id="quoteTextHeader" class="text-[11px] font-semibold text-technoGold italic truncate pr-3 pointer-events-none">
+                "Technoblade never dies!"
+            </p>
+            <i class="fa-solid fa-arrows-rotate text-technoRed text-sm shrink-0 pointer-events-none"></i>
+        </div>
+
+    </div>
+</div>
 
             <!-- Mobile Menu Toggle Button -->
             <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-cardBg border border-cardBorder">
@@ -119,7 +151,7 @@
                 <i class="fa-solid fa-shield-halved"></i>
                 <span>Official Connections</span>
             </div>
-            <h1 class="font-headline font-black text-4xl sm:text-5xl text-white">Social Media & Links</h1>
+            <h4 class="font-headline font-black italic text-4xl sm:text5xl md:text-6xl lg:text-7xl tracking-tight text-technoRed text-glow-red mb-4 drop-shadow-2xl">Social Media & Links</h4>
             <p class="text-gray-400 text-sm sm:text-base">
                 Official verified hubs, community platforms, and charitable foundations. Beware of impersonators.
             </p>
@@ -265,5 +297,49 @@
             mobileMenu.classList.toggle('hidden');
         }
     </script>
+
+    <script>
+    (function () {
+        const quotes = [
+            "Technoblade never dies!",
+            "If you wish upon a star, you're wishing upon a satellite.",
+            "Officer, I drop kicked that child in self-defense.",
+            "This is fun. I dropped outta college for this.",
+            "I have been farming potatoes for 11 hours today."
+        ];
+
+        let isFlipped = false;
+
+        function initQuoteCard() {
+            const card = document.getElementById('quote-card-inner');
+            const headerQuoteEl = document.getElementById('quoteTextHeader');
+
+            if (!card) return;
+
+            card.addEventListener('click', function () {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const newQuote = '"' + quotes[randomIndex] + '"';
+
+                // 1. Start 3D Flip
+                isFlipped = !isFlipped;
+                card.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+
+                // 2. Delay quote update by 250ms (halfway through 500ms rotation)
+                setTimeout(() => {
+                    if (headerQuoteEl) {
+                        headerQuoteEl.textContent = newQuote;
+                    }
+                }, 250);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initQuoteCard);
+        } else {
+            initQuoteCard();
+        }
+    })();
+</script>
+
 </body>
 </html>
