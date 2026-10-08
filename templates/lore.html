@@ -1,0 +1,75 @@
+        <!-- PAGE 3: Lore & Videos Gallery -->
+        <div id="page-gallery" class="page-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-technoGold">Archived Records</span>
+                <h1 class="font-headline font-black text-4xl text-white">Lore, Battles & Iconic Achievements</h1>
+                <p class="text-gray-400 text-sm sm:text-base">Filter through Technoblade's legendary Minecraft sagas, tournament records, and famous wars.</p>
+            </div>
+
+            <!-- Filter Categories with Icons -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-technoRed text-white shadow-red-glow flex items-center gap-2">
+                    <span>All Sagas</span>
+                </button>
+                <button onclick="filterGallery('skyblock')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 fill-current text-technoGold" viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 3 9.5C2 13.5 3.5 18 7 20C10.5 22 16.5 21.5 19.5 18.5C22.5 15.5 22 10.5 20 7.5C18 4.5 15.5 3 12 3Z"/></svg>
+                    <span>Potato War</span>
+                </button>
+                <button onclick="filterGallery('smp')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
+                    <span>Dream SMP Lore</span>
+                </button>
+                <button onclick="filterGallery('pvp')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-cardBg border border-cardBorder text-gray-400 hover:text-white flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 fill-current text-technoRed" viewBox="0 0 24 24"><path d="M19.78 2.22a.75.75 0 00-1.06 0l-10.5 10.5a.75.75 0 00-.22.53v2.25c0 .414.336.75.75.75h2.25c.199 0 .389-.079.53-.22l10.5-10.5a.75.75 0 000-1.06l-2.25-2.25z"/></svg>
+                    <span>Unmatched PvP</span>
+                </button>
+            </div>
+
+            <!-- Grid Items -->
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="gallery-item skyblock bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-amber-500/10 text-technoGold border border-amber-500/30 text-[10px] font-bold uppercase flex items-center gap-1.5">
+                            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 3C7.5 3 4 5.5 3 9.5C2 13.5 3.5 18 7 20C10.5 22 16.5 21.5 19.5 18.5C22.5 15.5 22 10.5 20 7.5C18 4.5 15.5 3 12 3Z"/></svg>
+                            Potato War
+                        </span>
+                        <span class="text-xs text-gray-500">500M+ Potatoes</span>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">The Crown of Hypixel Skyblock</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">A rivalry against im_a_squid_kid that lasted months, featuring custom hot air balloons, intricate minion math, and psychological warfare.</p>
+                    <a href="https://www.youtube.com/watch?v=m4Q_C-B_28E" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
+                        <span>Watch Trilogy</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <div class="gallery-item smp bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-red-500/10 text-technoRed border border-red-500/30 text-[10px] font-bold uppercase">Dream SMP</span>
+                        <span class="text-xs text-gray-500">The Anarchist</span>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">The Destruction of L'Manberg</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">Spawned dozens of withers and unleashed complete anarchy alongside Dream and Philza, delivering the legendary "You want to be a hero, Tommy?" speech.</p>
+                    <a href="https://www.youtube.com/watch?v=gT83Jsn3_Rk" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
+                        <span>Watch Event</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+                <div class="gallery-item pvp bg-cardBg border border-cardBorder rounded-2xl p-6 hover:border-technoRed transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30 text-[10px] font-bold uppercase flex items-center gap-1.5">
+                            <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M19.78 2.22a.75.75 0 00-1.06 0l-10.5 10.5a.75.75 0 00-.22.53v2.25c0 .414.336.75.75.75h2.25c.199 0 .389-.079.53-.22l10.5-10.5a.75.75 0 000-1.06l-2.25-2.25z"/></svg>
+                            $100k Duel
+                        </span>
+                        <span class="text-xs text-gray-500">1v1 MrBeast</span>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">Technoblade vs Dream 1v1</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">The ultimate clash of titans hosted by MrBeast across 10 intense rounds in multiple version combat systems. Technoblade emerged victorious 6-4.</p>
+                    <a href="https://www.youtube.com/watch?v=z3Wy3r1jDLA" target="_blank" class="text-xs font-bold text-technoRed hover:underline inline-flex items-center gap-1">
+                        <span>Watch Match</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
